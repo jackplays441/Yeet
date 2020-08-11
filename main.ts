@@ -1,6 +1,3 @@
-controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-	
-})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Jumps < 2) {
         mySprite.vy = -150
@@ -75,5 +72,5 @@ game.onUpdate(function () {
     }
 })
 game.onUpdate(function () {
-    mySprite2.follow(mySprite)
+    mySprite2.follow(mySprite, 45)
 })
