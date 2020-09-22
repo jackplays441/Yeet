@@ -1,4 +1,4 @@
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Jumps < 2) {
         mySprite.vy = -150
         Jumps = Jumps + 1
@@ -6,24 +6,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 let Jumps = 0
 let mySprite: Sprite = null
-tiles.setTilemap(tiles.createTilemap(hex`1000100000000000000000000000000000000000000000000000000000000000000000000101010101010000010101000001010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010101010100000000000000000001000000000000000100010000010000000000000000000000000000000000000000000000000001000000000000000000000000000000000100000100010000000000000000000000000000000000000100000000000000000000000000010000000000000000000000000001000000000000000000000101010100000000000000000000000000000000000000000000000000000000`, img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    2 2 2 2 2 2 . . 2 2 2 . . 2 2 . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . 2 2 2 2 2 
-    . . . . . . . . . 2 . . . . . . 
-    . 2 . 2 . . 2 . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    2 . . . . . . . . . . . . . . . 
-    . 2 . . 2 . 2 . . . . . . . . . 
-    . . . . . . . . . 2 . . . . . . 
-    . . . . . . . 2 . . . . . . . . 
-    . . . . . 2 . . . . . . . . . . 
-    2 2 2 2 . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, [myTiles.transparency16,sprites.builtin.forestTiles0], TileScale.Sixteen))
+tiles.setTilemap(tilemap`level`)
 mySprite = sprites.create(img`
     8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
     8 2 2 2 8 8 8 8 8 8 8 8 2 2 2 8 
@@ -42,8 +25,7 @@ mySprite = sprites.create(img`
     8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
     8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
     `, SpriteKind.Player)
-let HP = 5
-info.setLife(HP)
+info.setLife(3)
 mySprite.ay = 300
 mySprite.setPosition(5, 98)
 let mySprite2 = sprites.create(img`
@@ -64,6 +46,27 @@ let mySprite2 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
+let ahhhhhhhhhhhhhhhhhhhhh = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Player)
+game.onUpdate(function () {
+    mySprite2.follow(mySprite, 45)
+})
 game.onUpdate(function () {
     scene.cameraFollowSprite(mySprite)
     controller.moveSprite(mySprite, 100, 0)
@@ -71,6 +74,11 @@ game.onUpdate(function () {
         Jumps = 0
     }
 })
-game.onUpdate(function () {
-    mySprite2.follow(mySprite, 45)
+forever(function () {
+    if (true) {
+        if (mySprite.overlapsWith(mySprite2)) {
+            info.changeLifeBy(-1)
+            mySprite2.setPosition(0, 0)
+        }
+    }
 })
