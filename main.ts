@@ -309,6 +309,7 @@ let ahhhhhhhhhhhhhhhhhhhhh = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
+tiles.placeOnRandomTile(mySprite, myTiles.tile1)
 game.onUpdate(function () {
     scene.cameraFollowSprite(mySprite)
     controller.moveSprite(mySprite, 100, 0)
