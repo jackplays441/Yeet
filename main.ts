@@ -303,7 +303,7 @@ let mySprite2 = sprites.create(img`
     . e e . . . . . . . . . . e e . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Enemy)
 let ahhhhhhhhhhhhhhhhhhhhh = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
