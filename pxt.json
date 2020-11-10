@@ -3,7 +3,10 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "darts": "*"
+        "darts": "*",
+        "tilemaps": "github:microsoft/pxt-tilemaps#v1.10.0",
+        "animation": "*",
+        "sevenseg": "*"
     },
     "files": [
         "main.blocks",
